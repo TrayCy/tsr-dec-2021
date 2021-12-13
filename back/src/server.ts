@@ -1,15 +1,15 @@
 console.log("About to start the server...");
-const express = require("express");
-const serveIndex = require("serve-index");
-const serve = require("serve-index");
+import express from "express";
+import serveIndex from "serve-index";
+import serve from "serve-index";
 const app = express();
 const port: number = 3000;
-const publicDir = "public";
+const publicDir = "../front/dist";
 
 app.use((req, res, next) => {
   console.log("req: ", req.url, this);
   next();
-}); 
+});
 
 /* app.get("/", (req, res) => {
   res.json({ titi: 123 });
