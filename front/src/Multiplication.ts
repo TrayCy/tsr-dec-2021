@@ -1,6 +1,13 @@
 import { CleanPlugin } from "webpack";
 
 export class Multiplication {
+  // #region Properties (2)
+
+  public multiplicator: number = 2;
+  public sampleNbr: number = 10;
+
+  // #endregion Properties (2)
+
   // #region Constructors (1)
 
   constructor() {
@@ -9,10 +16,19 @@ export class Multiplication {
 
   // #endregion Constructors (1)
 
-  // #region Public Methods (4)
+  // #region Public Methods (5)
+
+  public clean() {
+    const gPoint = document.querySelector("svg g.point");
+    gPoint.innerHTML = "";
+    const gLine = document.querySelector("svg g.line");
+    gLine.innerHTML = "";
+  }
 
   public render() {
     console.log("I render");
+
+    this.clean();
 
     const gPoint = document.querySelector("svg g.point");
 
@@ -21,10 +37,10 @@ export class Multiplication {
     const cy0 = 220;
     const r0 = 200;
 
-    const n = 10; // coeff
+    const n = this.sampleNbr; // coeff
 
     for (let i = 0; i < n; i++) {
-      console.log("Block statement execution no." + i);
+      // console.log("Block statement execution no." + i);
 
       const angle = ((2 * Math.PI) / n) * i;
 
@@ -54,11 +70,11 @@ export class Multiplication {
     const cy0 = 220;
     const r0 = 200;
 
-    const n = 100; // coeff
-    const p = 20;
+    const n = this.sampleNbr; // coeff
+    const p = this.multiplicator;
 
     for (let i = 0; i < n; i++) {
-      console.log("Block statement execution no." + i);
+      // console.log("Block statement execution no." + i);
 
       const angle1 = ((2 * Math.PI) / n) * i;
       const angle2 = p * angle1;
@@ -82,12 +98,12 @@ export class Multiplication {
   }
 
   public setMultiplicator(multiplicator: any) {
-    throw new Error("Method not implemented.");
+    this.multiplicator = multiplicator;
   }
 
-  public setSampleNb(sampleNb: any) {
-    throw new Error("Method not implemented.");
+  public setSampleNbr(sampleNbr: any) {
+    this.sampleNbr = sampleNbr;
   }
 
-  // #endregion Public Methods (4)
+  // #endregion Public Methods (5)
 }

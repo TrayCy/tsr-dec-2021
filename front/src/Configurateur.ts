@@ -1,19 +1,38 @@
 import { Config } from "./interfaces/Config";
 
 export class Configurateur {
-  // #region Constructors (1)
+  callback: (conf: Config) => void = () => {};
+
+  config: Config = {
+    sampleNbr: 10,
+    multiplicator: 2,
+  };
 
   constructor() {
     console.log("My configurator");
+    const sampleNbrInput = document.querySelector("input.sampleNbr");
+    if (!(sampleNbrInput instanceof HTMLInputElement)) {
+      throw new Error("Ooops");
+    }
+
+    console.log(sampleNbrInput);
+    sampleNbrInput.value = this.config.sampleNbr + "";
+    const sampleNbrLabel = document.querySelector("div.sampleNbr");
+    sampleNbrLabel.innerHTML = this.config.sampleNbr + "";
+
+    sampleNbrInput.addEventListener("input", (evt: Event) => {
+      console.log(evt);
+
+      this.config.sampleNbr = +(evt.target as HTMLInputElement).value;
+
+      const sampleNbrLabel = document.querySelector("div.sampleNbr");
+      sampleNbrLabel.innerHTML = this.config.sampleNbr + "";
+
+      this.callback(this.config);
+    });
   }
-
-  // #endregion Constructors (1)
-
-  // #region Public Methods (1)
 
   public onChange(callback: (conf: Config) => void) {
-    throw new Error("Method not implemented.");
+    this.callback = callback;
   }
-
-  // #endregion Public Methods (1)
 }

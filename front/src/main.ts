@@ -10,7 +10,7 @@ function main() {
   m.render();
   const c = new Configurateur();
   c.onChange((conf: Config) => {
-    m.setSampleNb(conf.sampleNbr);
+    m.setSampleNbr(conf.sampleNbr);
     m.setMultiplicator(conf.multiplicator);
     m.render();
   });
