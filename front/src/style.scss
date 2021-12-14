@@ -1,5 +1,23 @@
 $body-color: red;
 
-body {
-  color: $body-color;
+svg {
+  width: 30em;
+  height: 30em;
+  background-color: rgb(230, 230, 230);
+
+  circle {
+    fill: transparent;
+    stroke: black;
+  }
+
+  g.point {
+    circle {
+      fill: black;
+      stroke: black;
+    }
+  }
+
+  line {
+    stroke: black;
+  }
 }
