@@ -5,6 +5,8 @@
         "outDir": "build",
         "esModuleInterop": true,
         "strict": true,
+        "sourceMap": true,
+        "module": "CommonJS"
         
     },
     "include": ["src/**/*.ts"]
