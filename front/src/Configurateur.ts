@@ -10,23 +10,28 @@ export class Configurateur {
 
   constructor() {
     console.log("My configurator");
-    const sampleNbrInput = document.querySelector("input.sampleNbr");
-    if (!(sampleNbrInput instanceof HTMLInputElement)) {
+    this.init("sampleNbr");
+    this.init("multiplicator");
+  }
+
+  init(className: keyof Config) {
+    const input = document.querySelector("input." + className);
+    if (!(input instanceof HTMLInputElement)) {
       throw new Error("Ooops");
     }
 
-    console.log(sampleNbrInput);
-    sampleNbrInput.value = this.config.sampleNbr + "";
-    const sampleNbrLabel = document.querySelector("div.sampleNbr");
-    sampleNbrLabel.innerHTML = this.config.sampleNbr + "";
+    console.log(input);
+    input.value = this.config[className] + "";
+    const label = document.querySelector("div." + className);
+    label.innerHTML = this.config[className] + "";
 
-    sampleNbrInput.addEventListener("input", (evt: Event) => {
+    input.addEventListener("input", (evt: Event) => {
       console.log(evt);
 
-      this.config.sampleNbr = +(evt.target as HTMLInputElement).value;
+      this.config[className] = +(evt.target as HTMLInputElement).value;
 
-      const sampleNbrLabel = document.querySelector("div.sampleNbr");
-      sampleNbrLabel.innerHTML = this.config.sampleNbr + "";
+      const label = document.querySelector("div." + className);
+      label.innerHTML = this.config[className] + "";
 
       this.callback(this.config);
     });
