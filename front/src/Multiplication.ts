@@ -1,11 +1,17 @@
 import { CleanPlugin } from "webpack";
 
 export class Multiplication {
+  // #region Constructors (1)
+
   constructor() {
     console.log("Instanciate new multiplication");
   }
 
-  render() {
+  // #endregion Constructors (1)
+
+  // #region Public Methods (4)
+
+  public render() {
     console.log("I render");
 
     const gPoint = document.querySelector("svg g.point");
@@ -40,7 +46,7 @@ export class Multiplication {
     this.renderLine();
   }
 
-  renderLine() {
+  public renderLine() {
     const gLine = document.querySelector("svg g.line");
 
     //my big circle
@@ -74,4 +80,14 @@ export class Multiplication {
       gLine.appendChild(circle);
     }
   }
+
+  public setMultiplicator(multiplicator: any) {
+    throw new Error("Method not implemented.");
+  }
+
+  public setSampleNb(sampleNb: any) {
+    throw new Error("Method not implemented.");
+  }
+
+  // #endregion Public Methods (4)
 }
